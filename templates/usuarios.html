@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image-x/png" href="../static/image/icone.ico">
+    <title>WSD - Usuários</title>
+    <!-- Tabelas-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <link href="../static/css/index.css" rel="stylesheet" />
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <main class="menu-infos">
+        <div id="solicitacao" class="cadastrar">
+            <div class="solicitacao-container">
+                <div  class="titulo">
+                    <h1>Usuários</h1>
+                </div>
+                <div class="solicitacao-box">
+                    <h2>Usuários cadastrados no sistema</h2>
+                    <div id="aprovadassolicitacoes" style="display: block;" class="visualizar-cadastros">
+                        <table id="aprovadas-table" class="display">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Matricula</th>
+                                    <th>Função cadastrada</th>
+                                    {% if nome_usuario == 'admin' %}
+                                    <th>Excluir</th>
+                                    {% endif %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    {% for usuario in usuarios %}
+                                <tr>
+                                    <td>{{ usuario[1] }}</td>
+                                    <td>{{ usuario[2] }}</td>
+                                    <td>{{ usuario[3] }}</td> 
+                                    {% if nome_usuario == 'admin' %}  
+                                    <td>
+                                        <form action="{{ url_for('excluir_usuario', usuario_id=usuario[0]) }}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir este acesso?');">
+                                            <button class="excluir-btn" type="submit">Excluir</button>
+                                        </form>                                                                             
+                                    </td>  
+                                    {% endif %}                           
+                                </tr>
+                                {% endfor %}
+                            </tbody>       
+                        </table>
+                    </div>
+                    
+                </div>              
+            </div>    
+        </div>
+    </main>
+    {% endblock %}
+
+    {% block extra_scripts %}
+    <script src="{{ url_for('static', filename='js/tabela.js') }}"></script>
+
+    {% endblock %}
+
+    
+</body>
+</html>

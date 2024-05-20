@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image-x/png" href="../static/image/icone.ico">
+    <title>WSD - Relatórios</title>
+    <link href="../static/css/index.css" rel="stylesheet" />
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <main class="menu-infos">
+        <div id="gerarRelatorio">
+            <div class="titulo">
+                <h1>Gerar relatório</h1>
+            </div>
+            <div class="relarorio-container">
+                <div class="relatorio-box">
+                    <div class="relatorio-box-img">
+                        <img src="../static/image/notificacao2.png" alt="">
+                    </div>         
+                    <div class="relatorio-box-info">
+                        <h4>Relatório - Notificações</h4>
+                        <p>Relatorio geral informando todas as notificações na plataforma, arquivo gerado em formato PDF.</p>
+                        <a href="{{ url_for('gerar_relatorio_usuarios') }}" target="_blank">Gerar relatorio</a>
+                    </div>
+                </div>
+                <div class="relatorio-box">
+                    <div class="relatorio-box-img">
+                        <img src="../static/image/grafico.png" alt="">
+                    </div>         
+                    <div class="relatorio-box-info">
+                        <h4>Relatório - Gráficos</h4>
+                        <p>Gráficos mensais gerados com base nas notificações, arquivo gerado em formato PDF.</p>
+                        <a href="{{ url_for('gerar_relatorio_usuarios') }}" target="_blank">Gerar relatorio</a>
+                    </div>
+                </div>
+                <div class="relatorio-box">
+                    <div class="relatorio-box-img">
+                        <img src="../static/image/relatorio1.png" alt="">
+                    </div>         
+                    <div class="relatorio-box-info">
+                        <h4>Relatório - Usários</h4>
+                        <p>Relatorio geral informando todos os usuários cadastrados na plataforma, arquivo gerado em formato PDF.</p>
+                        <a href="{{ url_for('gerar_relatorio_usuarios') }}" target="_blank">Gerar relatorio</a>
+                    </div>        
+                </div>
+                
+            </div>          
+        </div>
+    </main>
+    {% endblock %}
+
+</body>
+</html>
